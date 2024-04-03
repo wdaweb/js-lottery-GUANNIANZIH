@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 練習一:  0 到 100 隨機取一個整數
+        // for (i = 1; i < 300; i++) {
+        //     let number = Math.floor(Math.random() * 101)
+        //     // document.write(number)
+        //     if (number === 0) {
+        //         document.write(`${number}這裡出現0`)
+        //     } else if (number === 100) {
+        //         document.write(`${number}這裡出現100`)
+        //     } else {
+        //         document.write(number)
+        //     }
+        //     document.write(`<br>`)
+        // }
+
+        // 練習二: 最小整數和最大整數，回傳一個區間內的隨機整數
+        // function getnumber(min, max) {
+        //     // 假設回傳區間數為 3-10 之間
+        //     return Math.round(Math.random() * (max - min)) + min
+        // }
+        // document.write(getnumber(1, 38))
+
+        練習三:
+        // 先設一個去數值區間的 function
+        function getnumber(min, max) {
+            return Math.round(Math.random() * (max - min)) + min
+        }
+
+        function getlottery() {
+            // 宣告第一區的文字
+            let status = `第一區號碼為: `
+            // 宣告第二區的文字
+            let status2 = `第二區號碼為: `
+            // 宣告一個空的陣列等等 push 數字進去
+            let numberArray = []
+            // 宣告 n 放隨機數字用來放 genNumber()的數字
+            let n = 0
+            // 做一個 for 迴圈跑 6 次 + if 判斷式去判斷有沒有重複值
+            for (i = 1; i <= 6; i++) {
+                n = getnumber(1, 38)
+                // 判斷陣列裡面的數字有沒有重複: .indexOf 如果沒有重複會回傳 -1
+                // .indexOf 如果有重複會回傳索引值; 回傳索引 >= 0 代表數值重複 + continue 略過這次
+                if (numberArray.indexOf(n) >= 0) {
+                    continue
+                    // 如果沒重複就把值 push 到陣列裡
+                } else {
+                    numberArray.push(n)
+                }
+                // 最後 return 第一區、第二區的數字
+            }
+            return status + numberArray + '<br>' + status2 + getnumber(1, 8)
+        }
+        document.write(getlottery())
+
+
+
+    </script>
+</body>
+
+</html>
